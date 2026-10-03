@@ -121,7 +121,6 @@ export function Hero() {
       <footer className="creatie-hero-bottom">
         {/* Left Manifesto */}
         <div className="creatie-manifesto">
-          <span className="manifesto-dash">—</span>
           <div className="manifesto-copy">
             <p className="manifesto-sub">I build reliable software with clean architecture, a smooth user experience, and code that&apos;s easy to maintain.</p>
           </div>
