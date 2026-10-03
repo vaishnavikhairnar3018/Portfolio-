@@ -283,6 +283,10 @@
     max-width: 160px;
   }
 
+  .logo-surname {
+    display: none;
+  }
+
   .header-container {
     overflow: visible;
     gap: 0.5rem;

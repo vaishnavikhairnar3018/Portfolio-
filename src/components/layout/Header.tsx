@@ -81,7 +81,7 @@ export function Header() {
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`} role="banner">
       <div className="header-container container">
         <a href="#" className="logo" aria-label="Vaishnavi Khairnar - Home">
-          <span className="logo-text">Vaishnavi Khairnar</span>
+          <span className="logo-text">Vaishnavi<span className="logo-surname"> Khairnar</span></span>
         </a>
 
         <nav className="nav" role="navigation" aria-label="Main navigation">
