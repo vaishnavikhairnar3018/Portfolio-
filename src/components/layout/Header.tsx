@@ -119,16 +119,18 @@ export function Header() {
               ))}
             </div>
 
-            <Magnetic strength={0.2}>
-              <Button
-                variant="primary"
-                size="sm"
-                className="desktop-only nav-contact-btn"
-                onClick={() => scrollToSection('#contact')}
-              >
-                Let&rsquo;s Talk ↗
-              </Button>
-            </Magnetic>
+            <div className="desktop-only">
+              <Magnetic strength={0.2}>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="nav-contact-btn"
+                  onClick={() => scrollToSection('#contact')}
+                >
+                  Let&rsquo;s Talk ↗
+                </Button>
+              </Magnetic>
+            </div>
 
             <button
               className="mobile-menu-btn"

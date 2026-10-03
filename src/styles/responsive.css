@@ -61,16 +61,19 @@
 
 /* ── TABLET PORTRAIT (max 768px) ── */
 @media (max-width: 768px) {
-  /* Header — ensure hamburger icon isn't clipped */
+  /* Header — equal symmetric margins on left and right */
   .header-container {
-    padding-right: 0.5rem;
+    padding: 0 1.25rem !important;
     gap: 0.5rem;
   }
 
+  .desktop-only,
+  .nav-contact-btn {
+    display: none !important;
+  }
+
   .logo-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 160px;
+    white-space: nowrap;
   }
 
   /* Hero */
@@ -291,14 +294,12 @@
   }
 
   .header-container {
-    padding: 0 0.75rem;
+    padding: 0 1.25rem !important;
     gap: 0.5rem;
   }
 
   .logo-text {
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .mobile-menu-btn {
@@ -730,11 +731,11 @@
 @media (max-width: 480px) {
   /* Header */
   .header-container {
-    padding: 0 0.5rem;
+    padding: 0 1.25rem !important;
   }
 
   .logo-text {
-    max-width: 120px;
+    white-space: nowrap;
   }
 
   .creatie-hero-title {
