@@ -172,14 +172,14 @@
 }
 
 .creatie-hero-title {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.8rem, 6.4vw, 5.8rem);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.015em;
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
-  color: #E6C83B;
-  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
   margin: 0;
 }
 
@@ -197,16 +197,6 @@
   gap: 0.4em;
 }
 
-.title-line--normal {
-  font-style: normal;
-  font-weight: 700;
-}
-
-.title-line--italic {
-  font-style: italic;
-  font-weight: 700;
-}
-
 /* ── Slanted Sticker Badges & Paperclips ── */
 .sticker-badge {
   display: inline-flex;
@@ -220,7 +210,6 @@
   user-select: none;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   text-transform: none;
-  font-style: normal;
   vertical-align: middle;
   white-space: nowrap;
 }

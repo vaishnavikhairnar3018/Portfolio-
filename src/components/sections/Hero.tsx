@@ -82,8 +82,8 @@ export function Hero() {
         </div>
 
         <h1 className="creatie-hero-title">
-          <span className="title-line title-line--normal">FROM FIRST</span>
-          <span className="title-line title-line--flex title-line--normal">
+          <span className="title-line">FROM FIRST</span>
+          <span className="title-line title-line--flex">
             COMMIT TO
             {/* Inline Slanted Eat Sticker */}
             <span className="sticker-badge sticker-illustration">
@@ -100,7 +100,7 @@ export function Hero() {
               <span className="sticker-text">Eat</span>
             </span>
           </span>
-          <span className="title-line title-line--flex title-line--italic">
+          <span className="title-line title-line--flex">
             {/* Inline Slanted Sleep Sticker */}
             <span className="sticker-badge sticker-3d">
               <span className="paperclip-icon paperclip-icon--purple" aria-hidden="true" />
@@ -113,7 +113,7 @@ export function Hero() {
             </span>
             LIVE IN
           </span>
-          <span className="title-line title-line--italic">PRODUCTION</span>
+          <span className="title-line">PRODUCTION</span>
         </h1>
       </div>
 
