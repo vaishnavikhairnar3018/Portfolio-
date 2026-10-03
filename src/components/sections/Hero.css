@@ -602,9 +602,18 @@
     max-width: 100%;
   }
 
-  .doodle-spiral,
+  .doodle-spiral {
+    top: 12%;
+    right: 8%;
+    width: 65px;
+    height: 52px;
+  }
+
   .doodle-bowl {
-    display: none;
+    top: 45%;
+    left: 4%;
+    width: 55px;
+    height: 55px;
   }
 }
 

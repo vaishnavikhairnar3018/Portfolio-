@@ -315,17 +315,24 @@
     font-size: clamp(1.8rem, 9vw, 2.8rem);
   }
 
-  /* Stickers — display as inline row, not stacked */
+  /* Stickers — with cute paperclip pins and playful angle */
   .sticker-badge {
-    padding: 0.25rem 1rem 0.25rem 0.35rem;
+    padding: 0.25rem 1.15rem 0.25rem 0.45rem !important;
     border-radius: 7px;
-    transform: rotate(0deg) !important;
     margin-bottom: 0;
   }
 
   .sticker-uiux {
-    transform: rotate(0deg) !important;
+    transform: rotate(-4deg) !important;
     margin-bottom: 0;
+  }
+
+  .sticker-illustration {
+    transform: rotate(3deg) !important;
+  }
+
+  .sticker-3d {
+    transform: rotate(-5deg) !important;
   }
 
   .sticker-text {
@@ -342,22 +349,118 @@
     height: 9px;
   }
 
+  /* Paperclip pins visible on mobile badges */
   .paperclip-icon {
-    display: none;
+    display: block !important;
+    position: absolute;
+    top: -8px;
+    right: 5px;
+    width: 9px;
+    height: 19px;
+    border-radius: 5px 5px 2px 2px;
+    border: 2px solid;
+    border-bottom: none;
+    box-shadow: 1px 1.5px 3px rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .paperclip-icon::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    right: 1px;
+    bottom: -2px;
+    border-radius: 3px 3px 2px 2px;
+    border: 1.2px solid rgba(255, 255, 255, 0.95);
+    border-top: none;
+  }
+
+  .paperclip-icon--blue {
+    border-color: #039cfb !important;
+  }
+  .paperclip-icon--blue::after {
+    border-color: #039cfb !important;
+  }
+  .paperclip-icon--pink {
+    border-color: #ec68fd !important;
+  }
+  .paperclip-icon--pink::after {
+    border-color: #ec68fd !important;
+  }
+  .paperclip-icon--purple {
+    border-color: #8168fd !important;
+  }
+  .paperclip-icon--purple::after {
+    border-color: #8168fd !important;
   }
 
   .creatie-hero-subtitle {
     font-size: 0.78rem;
   }
 
-  /* Hide confetti and floating doodles on mobile — they cluster in one spot */
-  .confetti-zigzag,
-  .confetti-diamond,
-  .confetti-mint,
-  .floating-paperclip,
-  .doodle-spiral,
+  /* Floating SVG Doodles & Charms on Mobile */
+  .creatie-doodles {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .doodle-spiral {
+    display: block !important;
+    position: absolute;
+    top: 13%;
+    right: 6%;
+    width: 52px;
+    height: 42px;
+  }
+
   .doodle-bowl {
-    display: none;
+    display: block !important;
+    position: absolute;
+    top: 45%;
+    left: 3.5%;
+    width: 48px;
+    height: 48px;
+  }
+
+  .confetti-mint {
+    display: block !important;
+    position: absolute;
+    bottom: 27%;
+    right: 11%;
+    width: 14px;
+    height: 14px;
+    background: #c8ea1d;
+    border-radius: 4px;
+    transform: rotate(-15deg);
+  }
+
+  .confetti-zigzag {
+    display: block !important;
+    position: absolute;
+    bottom: 23%;
+    right: 7%;
+    width: 22px;
+    height: 14px;
+    background: #f698a8;
+    clip-path: polygon(0 0, 45% 100%, 70% 50%, 100% 100%, 80% 0, 50% 40%);
+    transform: rotate(25deg);
+  }
+
+  .confetti-diamond {
+    display: block !important;
+    position: absolute;
+    bottom: 19%;
+    right: 10%;
+    width: 11px;
+    height: 11px;
+    background: #38bdf8;
+    transform: rotate(45deg);
   }
 
   /* Dock */
@@ -747,22 +850,64 @@
   }
 
   .sticker-badge {
-    padding: 0.2rem 0.6rem 0.2rem 0.3rem;
+    padding: 0.2rem 1.05rem 0.2rem 0.35rem !important;
     border-radius: 6px;
   }
 
+  .paperclip-icon {
+    top: -7px;
+    right: 4px;
+    width: 8px;
+    height: 17px;
+  }
+
   .sticker-text {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 
   .sticker-dot {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
   }
 
   .sticker-dot svg {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .doodle-spiral {
+    top: 13%;
+    right: 5%;
+    width: 46px;
+    height: 38px;
+  }
+
+  .doodle-bowl {
+    top: 45%;
+    left: 2.5%;
+    width: 42px;
+    height: 42px;
+  }
+
+  .confetti-mint {
+    bottom: 26%;
+    right: 9%;
+    width: 13px;
+    height: 13px;
+  }
+
+  .confetti-zigzag {
+    bottom: 22%;
+    right: 6%;
+    width: 19px;
+    height: 12px;
+  }
+
+  .confetti-diamond {
+    bottom: 18%;
+    right: 9%;
+    width: 10px;
+    height: 10px;
   }
 
   /* ID Card */
