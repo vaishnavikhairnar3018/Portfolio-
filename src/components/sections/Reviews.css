@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Creatie Reviews Section (Testimonial Paper Cards)
+   ========================================================================== */
+
+.creatie-reviews-section {
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+}
+
+.sticker-pill--pink {
+  background: #feebfc;
+  color: #ec68fd;
+}
+
+.sticker-pill--pink .section-sticker-icon {
+  background: #ec68fd;
+}
+
+.section-paperclip--pink {
+  border-color: #ec68fd;
+}
+.section-paperclip--pink::after {
+  border-color: #ec68fd;
+}
+
+/* Reviews Grid */
+.creatie-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .creatie-reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-paper-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.review-paper-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.review-stars {
+  color: #fac900;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.85rem;
+}
+
+.review-headline {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #212121;
+  margin: 0 0 0.75rem;
+}
+
+.review-body {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0 0 1.5rem;
+  flex-grow: 1;
+}
+
+.review-author-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.author-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #212121;
+}
+
+.author-role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #888888;
+}

@@ -1,0 +1,389 @@
+/* ==========================================================================
+   Creatie Projects Section (Notebook Paper & Pinned Browser Cards)
+   ========================================================================== */
+
+.creatie-projects-section {
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.creatie-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Section Header with Paperclip Sticker ── */
+.creatie-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-sticker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.45rem;
+  border-radius: 9px;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.25rem;
+  transform: rotate(-3deg);
+  transition: transform var(--transition-base);
+  cursor: default;
+}
+
+.section-sticker-pill:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.sticker-pill--blue {
+  background: #e4f3ff;
+  color: #039cfb;
+}
+
+.section-sticker-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: #039cfb;
+  color: #ffffff;
+}
+
+.section-sticker-label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #212121;
+  letter-spacing: -0.01em;
+}
+
+/* Section Paperclip */
+.section-paperclip {
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  width: 13px;
+  height: 26px;
+  border-radius: 7px 7px 3px 3px;
+  border: 2px solid #039cfb;
+  border-bottom: none;
+  background: transparent;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.section-paperclip::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  right: 2px;
+  bottom: -3px;
+  border-radius: 3px 3px 2px 2px;
+  border: 1.5px solid rgba(3, 156, 251, 0.8);
+  border-top: none;
+}
+
+.creatie-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #212121;
+  margin: 0;
+}
+
+/* ── Paperclip Tilted Browser Cards Grid ── */
+.creatie-cards-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 2rem;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .creatie-cards-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .creatie-cards-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Browser Window Frame Card ── */
+.paperclip-browser-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 8px 8px 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.paperclip-browser-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Physical Paperclip clipped over top card edge */
+.card-top-paperclip {
+  position: absolute;
+  top: -16px;
+  left: 28px;
+  width: 16px;
+  height: 34px;
+  border-radius: 9px 9px 4px 4px;
+  border: 2.5px solid;
+  border-bottom: none;
+  background: transparent;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.card-top-paperclip::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  right: 2px;
+  bottom: -4px;
+  border-radius: 5px 5px 2px 2px;
+  border: 2px solid;
+  border-top: none;
+}
+
+/* Paperclip Color Variations */
+.paperclip--blue {
+  border-color: #039cfb;
+}
+.paperclip--blue::after {
+  border-color: #039cfb;
+}
+
+.paperclip--green {
+  border-color: #34c75a;
+}
+.paperclip--green::after {
+  border-color: #34c75a;
+}
+
+.paperclip--yellow {
+  border-color: #fac900;
+}
+.paperclip--yellow::after {
+  border-color: #fac900;
+}
+
+.paperclip--pink {
+  border-color: #ec68fd;
+}
+.paperclip--pink::after {
+  border-color: #ec68fd;
+}
+
+.paperclip--purple {
+  border-color: #8168fd;
+}
+.paperclip--purple::after {
+  border-color: #8168fd;
+}
+
+/* Browser Window Header */
+.browser-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0.5rem 0.45rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.5rem;
+}
+
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.dot--red { background: #fd5d5c; }
+.dot--yellow { background: #fac900; }
+.dot--green { background: #34c75a; }
+
+.browser-url-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 0.15rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: #666666;
+}
+
+.url-lock {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.browser-metric-pill {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  white-space: nowrap;
+}
+
+/* Image Wrapper */
+.browser-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.browser-mockup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.paperclip-browser-card:hover .browser-mockup-img {
+  transform: scale(1.04);
+}
+
+/* Card Body & Meta */
+.browser-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.65rem 0.25rem 0.15rem;
+}
+
+.card-brand-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.card-project-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #212121;
+  margin: 0;
+}
+
+.card-project-cat {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #039cfb;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.card-project-summary {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #555555;
+  margin: 0;
+}
+
+.card-tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.15rem;
+}
+
+.card-mini-tag {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: #444444;
+  background: #f2f2ee;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+}
+
+.card-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.card-action-btn--demo {
+  background: #212121;
+  color: #ffffff;
+}
+
+.card-action-btn--demo:hover {
+  background: #039cfb;
+  transform: translateY(-1px);
+}
+
+.card-action-btn--code {
+  background: #f2f2ee;
+  color: #333333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-action-btn--code:hover {
+  background: #e5e5df;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .creatie-projects-section {
+    padding: 3.5rem 1rem 4rem;
+  }
+}

@@ -1,0 +1,191 @@
+:root {
+  /* Brand & Theme Colors — Dark OLED / Slate + Emerald */
+  --color-background: #0a0f1e;
+  --color-surface: #0f172a;
+  --color-card: #131d31;
+  --color-card-hover: #18253d;
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-card-border-hover: rgba(34, 197, 94, 0.4);
+  
+  --color-foreground: #f8fafc;
+  --color-muted-foreground: #94a3b8;
+  --color-subtle: #64748b;
+  
+  --color-primary: #1e293b;
+  --color-on-primary: #ffffff;
+  --color-secondary: #334155;
+  --color-on-secondary: #ffffff;
+  
+  /* Accents */
+  --color-accent: #22c55e;
+  --color-accent-hover: #16a34a;
+  --color-accent-subtle: rgba(34, 197, 94, 0.12);
+  --color-on-accent: #0a0f1e;
+  
+  --color-sky: #38bdf8;
+  --color-sky-subtle: rgba(56, 189, 248, 0.12);
+  --color-amber: #f59e0b;
+  --color-amber-subtle: rgba(245, 158, 11, 0.12);
+  --color-destructive: #ef4444;
+
+  /* Creatie Paper & Pastel Theme Tokens */
+  --color-paper: #f5f3ea;
+  --color-paper-card: #ffffff;
+  --color-paper-border: rgba(0, 0, 0, 0.08);
+  --color-paper-text: #212121;
+  --color-paper-muted: #5e5e5e;
+  --color-paper-subtle: #8e8e8e;
+  
+  --color-pill-pink: #fedcdd;
+  --color-pill-blue: #bbdafe;
+  --color-pill-yellow: #f3ea9a;
+  --color-pill-lime: #e0fd72;
+  --color-pill-mint: #c7f8d9;
+  --color-pill-lavender: #e2dcfd;
+  --color-pill-coral: #fd5d5c;
+  
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows & Glows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(34, 197, 94, 0.2);
+  --shadow-glow-sky: 0 0 24px rgba(56, 189, 248, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  --container-max: 1240px;
+  --nav-height: 72px;
+  
+  font-size: 16px;
+  line-height: 1.6;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}

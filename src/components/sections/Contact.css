@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Creatie Contact Section (Papercraft Form & Direct Actions)
+   ========================================================================== */
+
+.creatie-contact-section {
+  padding: 5rem 1.5rem 6.5rem;
+  position: relative;
+}
+
+.sticker-pill--purple {
+  background: #f1eefc;
+  color: #8168fd;
+}
+
+.sticker-pill--purple .section-sticker-icon {
+  background: #8168fd;
+}
+
+.section-paperclip--purple {
+  border-color: #8168fd;
+}
+.section-paperclip--purple::after {
+  border-color: #8168fd;
+}
+
+.creatie-contact-sub {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #555555;
+  max-width: 540px;
+  margin: 1.25rem auto 0;
+}
+
+/* Contact Paper Card */
+.contact-paper-card {
+  max-width: 740px;
+  margin: 3.5rem auto 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .form-group-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #777777;
+}
+
+.creatie-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: #212121;
+  background: #fafaf8;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.creatie-input:focus {
+  outline: none;
+  border-color: #212121;
+  background: #ffffff;
+}
+
+.creatie-select {
+  cursor: pointer;
+}
+
+.creatie-textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.creatie-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.85rem;
+  background: #212121;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.creatie-submit-btn:hover {
+  transform: translateY(-2px);
+  background: #000000;
+}
+
+.creatie-copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.4rem;
+  background: #f5f4ef;
+  color: #444444;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.creatie-copy-email-btn:hover {
+  background: #eceae3;
+  color: #212121;
+  transform: translateY(-1px);
+}
+
+/* Social Bar */
+.contact-social-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.social-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #888888;
+  letter-spacing: 0.04em;
+}
+
+.social-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.social-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #444444;
+  background: #f7f6f1;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-pill:hover {
+  background: #212121;
+  color: #ffffff;
+  border-color: #212121;
+  transform: translateY(-1px);
+}

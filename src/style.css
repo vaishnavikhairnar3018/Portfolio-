@@ -1,0 +1,51 @@
+@import './styles/tokens.css';
+@import './styles/globals.css';
+@import './styles/responsive.css';
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Base App Shell */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0a0f1e;
+  color: var(--color-foreground);
+  overflow-x: hidden;
+  position: relative;
+  font-family: var(--font-sans);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Creatie Paper & Notebook Grid Body */
+.creatie-paper-body {
+  background-color: var(--color-paper);
+  color: var(--color-paper-text);
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  position: relative;
+}

@@ -1,0 +1,29 @@
+.variable-proximity-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.proximity-item {
+  display: inline-flex;
+  align-items: center;
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proximity-item > * {
+  border-color: rgba(
+    calc(255 - (255 - 34) * var(--proximity, 0)),
+    calc(255 - (255 - 197) * var(--proximity, 0)),
+    calc(255 - (255 - 94) * var(--proximity, 0)),
+    calc(0.08 + 0.35 * var(--proximity, 0))
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proximity-item {
+    transform: none !important;
+    transition: none !important;
+  }
+}

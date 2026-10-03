@@ -1,0 +1,713 @@
+/* ==========================================================================
+   Responsive Overrides — Comprehensive Mobile/Tablet/Desktop Adjustments
+   Breakpoints: 480 (small phone), 640 (phone), 768 (tablet), 1024 (laptop)
+   ========================================================================== */
+
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+  /* Hero */
+  .creatie-hero {
+    padding: calc(var(--nav-height, 60px) + 1rem) 1.25rem 2rem;
+  }
+
+  .creatie-hero-title {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  }
+
+  .sticker-badge {
+    padding: 0.35rem 1.5rem 0.35rem 0.5rem;
+  }
+
+  .sticker-dot {
+    width: 22px;
+    height: 22px;
+  }
+
+  .creatie-hero-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* Projects */
+  .paperclip-browser-card {
+    max-width: 320px;
+  }
+
+  /* Services */
+  .creatie-services-section {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+
+  /* Stats */
+  .creatie-about-section {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+
+  /* Reviews */
+  .creatie-reviews-section {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+
+  /* Contact */
+  .creatie-contact-section {
+    padding: 3.5rem 1.25rem 4.5rem;
+  }
+
+  .contact-paper-card {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+/* ── TABLET PORTRAIT (max 768px) ── */
+@media (max-width: 768px) {
+  /* Hero */
+  .creatie-hero {
+    min-height: 100svh;
+    padding: calc(var(--nav-height, 60px) + 0.75rem) 1rem 1.5rem;
+  }
+
+  .creatie-hero-title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .title-line--flex {
+    flex-wrap: wrap;
+    gap: 0.3em;
+    justify-content: center;
+  }
+
+  .sticker-text {
+    font-size: 0.85rem;
+  }
+
+  .sticker-dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sticker-dot svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .creatie-hero-subtitle {
+    font-size: 0.85rem;
+    max-width: 90%;
+  }
+
+  .creatie-manifesto {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .creatie-manifesto-text {
+    font-size: 0.85rem;
+  }
+
+  .manifesto-btn {
+    font-size: 0.85rem;
+    padding: 0.65rem 1.35rem;
+  }
+
+  /* Dock */
+  .dock-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ID Card */
+  .id-card-section {
+    padding: 3rem 1rem;
+  }
+
+  .id-hanging-rig {
+    width: 480px;
+  }
+
+  .inner-id-card-content {
+    grid-template-columns: 1fr 100px;
+    gap: 0.75rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .id-brand-title {
+    font-size: 1.15rem;
+  }
+
+  .id-brand-subtitle {
+    font-size: 0.44rem;
+  }
+
+  .field-label {
+    font-size: 0.55rem;
+  }
+
+  .field-name {
+    font-size: 1.1rem;
+  }
+
+  .field-location,
+  .field-specialty {
+    font-size: 0.95rem;
+  }
+
+  .id-photo-frame {
+    width: 95px;
+    height: 110px;
+  }
+
+  .id-rubber-stamp {
+    width: 45px;
+    height: 45px;
+  }
+
+  .stamp-text {
+    font-size: 0.42rem;
+  }
+
+  .stamp-year {
+    font-size: 0.5rem;
+  }
+
+  .ticket-stub-wrapper {
+    width: 170px;
+    height: 115px;
+  }
+
+  .ticket-tag {
+    font-size: 0.65rem;
+  }
+
+  .ticket-services,
+  .ticket-motto {
+    font-size: 0.4rem;
+  }
+
+  .lily-accent {
+    width: 130px;
+  }
+
+  /* Projects */
+  .creatie-cards-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .browser-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Experience */
+  .experience-timeline {
+    gap: 1.5rem;
+  }
+
+  /* Skills */
+  .skills-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Stats */
+  .creatie-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .creatie-about-sub {
+    font-size: 0.95rem;
+  }
+
+  /* Reviews */
+  .creatie-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .review-paper-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* Contact */
+  .creatie-contact-sub {
+    font-size: 0.92rem;
+  }
+
+  .contact-paper-card {
+    padding: 1.5rem 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .creatie-submit-btn,
+  .creatie-copy-email-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Section Shared */
+  .creatie-section-header {
+    margin-bottom: 2rem;
+  }
+
+  .creatie-section-title {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-nav-group {
+    text-align: center;
+  }
+}
+
+/* ── MOBILE (max 640px) ── */
+@media (max-width: 640px) {
+  /* Hero */
+  .creatie-hero {
+    padding: calc(var(--nav-height, 56px) + 0.5rem) 0.75rem 1.25rem;
+  }
+
+  .creatie-hero-title {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+  }
+
+  .sticker-badge {
+    padding: 0.3rem 1.2rem 0.3rem 0.4rem;
+    border-radius: 8px;
+  }
+
+  .sticker-text {
+    font-size: 0.75rem;
+  }
+
+  .sticker-dot {
+    width: 18px;
+    height: 18px;
+  }
+
+  .creatie-hero-subtitle {
+    font-size: 0.78rem;
+  }
+
+  /* Dock */
+  .dock-bar {
+    padding: 0.4rem 0.65rem;
+    gap: 0.5rem;
+  }
+
+  .dock-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Profile card */
+  .creatie-profile-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.85rem 1rem;
+  }
+
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .profile-name {
+    font-size: 0.8rem;
+  }
+
+  .profile-desc {
+    font-size: 0.72rem;
+  }
+
+  /* Deck card stack */
+  .deck-card--front,
+  .deck-card--mid,
+  .deck-card--back {
+    display: none;
+  }
+
+  /* ID Card — Hide decorative accents on mobile for clean look */
+  .id-card-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .id-hanging-rig {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* Hide accent elements on mobile */
+  .ticket-stub-wrapper,
+  .lily-accent,
+  .charm-butterfly--top,
+  .charm-butterfly--right,
+  .charm-gem-heart,
+  .gold-star-charm--bottom,
+  .gold-star-charm--right {
+    display: none;
+  }
+
+  .inner-id-card-content {
+    grid-template-columns: 1fr 80px;
+    gap: 0.5rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .id-brand-title {
+    font-size: 0.95rem;
+  }
+
+  .id-brand-subtitle {
+    font-size: 0.38rem;
+  }
+
+  .field-label {
+    font-size: 0.48rem;
+  }
+
+  .field-name {
+    font-size: 0.9rem;
+  }
+
+  .field-location,
+  .field-specialty {
+    font-size: 0.78rem;
+  }
+
+  .id-photo-frame {
+    width: 75px;
+    height: 88px;
+  }
+
+  .id-rubber-stamp {
+    width: 38px;
+    height: 38px;
+    top: 5px;
+    right: 72px;
+  }
+
+  .stamp-text {
+    font-size: 0.35rem;
+  }
+
+  .stamp-year {
+    font-size: 0.42rem;
+  }
+
+  .id-card-motto {
+    font-size: 0.42rem;
+  }
+
+  .id-number {
+    font-size: 0.48rem;
+  }
+
+  .barcode-stripes {
+    height: 22px;
+  }
+
+  .barcode-numbers {
+    font-size: 0.38rem;
+  }
+
+  /* Projects */
+  .creatie-projects-section {
+    padding: 3rem 0.75rem;
+  }
+
+  .browser-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .browser-card-body {
+    padding: 0.5rem 0.2rem 0.1rem;
+  }
+
+  .card-project-name {
+    font-size: 0.92rem;
+  }
+
+  .card-project-summary {
+    font-size: 0.72rem;
+  }
+
+  /* Experience */
+  .experience-section {
+    padding: 3rem 0.75rem;
+  }
+
+  /* Services */
+  .creatie-services-section {
+    padding: 3rem 0.75rem 3.5rem;
+  }
+
+  .services-accordion-stack {
+    max-width: 100%;
+  }
+
+  .service-capsule-bar {
+    padding: 0.75rem 1rem;
+  }
+
+  .service-title-text {
+    font-size: 0.95rem;
+  }
+
+  .service-expanded-content {
+    padding: 0 1rem 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+  }
+
+  .service-tag-pill {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .services-doodle-spiral,
+  .services-doodle-shapes {
+    display: none;
+  }
+
+  /* Stats */
+  .creatie-about-section {
+    padding: 3rem 0.75rem 3.5rem;
+  }
+
+  .creatie-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  .sticky-stat-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .creatie-about-sub {
+    font-size: 0.88rem;
+    max-width: 100%;
+  }
+
+  .creatie-about-cta {
+    font-size: 0.85rem;
+    padding: 0.65rem 1.4rem;
+  }
+
+  /* Skills */
+  .skills-section {
+    padding: 3rem 0.75rem;
+  }
+
+  .skill-category-card {
+    padding: 1.25rem;
+  }
+
+  .skill-cat-title {
+    font-size: 1rem;
+  }
+
+  /* Reviews */
+  .creatie-reviews-section {
+    padding: 3rem 0.75rem 3.5rem;
+  }
+
+  .review-paper-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .review-headline {
+    font-size: 0.95rem;
+  }
+
+  .review-body {
+    font-size: 0.82rem;
+  }
+
+  /* Contact */
+  .creatie-contact-section {
+    padding: 3rem 0.75rem 4rem;
+  }
+
+  .contact-paper-card {
+    padding: 1.25rem 1rem;
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+
+  .creatie-input {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.875rem;
+  }
+
+  .creatie-submit-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .creatie-copy-email-btn {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .creatie-contact-sub {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  .contact-social-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  /* Section shared */
+  .creatie-section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .creatie-section-title {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+  }
+
+  .creatie-container {
+    padding: 0 0.5rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 0.75rem;
+  }
+}
+
+/* ── SMALL PHONE (max 480px) ── */
+@media (max-width: 480px) {
+  .creatie-hero-title {
+    font-size: clamp(1.6rem, 10vw, 2.2rem);
+  }
+
+  .title-line--flex {
+    gap: 0.2em;
+  }
+
+  .sticker-badge {
+    padding: 0.25rem 0.9rem 0.25rem 0.35rem;
+    border-radius: 7px;
+  }
+
+  .sticker-text {
+    font-size: 0.65rem;
+  }
+
+  .sticker-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sticker-dot svg {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* ID Card */
+  .id-hanging-rig {
+    max-width: 320px;
+  }
+
+  .inner-id-card-content {
+    grid-template-columns: 1fr 65px;
+    gap: 0.35rem;
+  }
+
+  .id-brand-title {
+    font-size: 0.8rem;
+  }
+
+  .field-name {
+    font-size: 0.75rem;
+  }
+
+  .field-location,
+  .field-specialty {
+    font-size: 0.65rem;
+  }
+
+  .id-photo-frame {
+    width: 60px;
+    height: 72px;
+  }
+
+  .id-rubber-stamp {
+    width: 32px;
+    height: 32px;
+    right: 55px;
+  }
+
+  .ticket-stub-wrapper {
+    width: 115px;
+    height: 78px;
+  }
+
+  .lily-accent {
+    width: 80px;
+  }
+
+  .charm-butterfly--top,
+  .charm-butterfly--right,
+  .charm-gem-heart {
+    display: none;
+  }
+
+  /* Stats */
+  .creatie-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  /* Contact */
+  .form-actions {
+    gap: 0.65rem;
+  }
+}
+
+/* ── LANDSCAPE PHONES ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .creatie-hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height, 56px) + 0.5rem);
+    padding-bottom: 1rem;
+  }
+
+  .creatie-hero-title {
+    font-size: 2rem;
+  }
+
+  .creatie-hero-center {
+    transform: none;
+    padding: 0.5rem 0;
+  }
+}
