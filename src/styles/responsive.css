@@ -400,6 +400,17 @@
     font-size: 0.78rem;
   }
 
+  .creatie-manifesto {
+    max-width: 100%;
+    justify-content: center;
+    padding: 0 0.5rem;
+  }
+
+  .manifesto-sub {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
   /* Floating SVG Doodles & Charms on Mobile */
   .creatie-doodles {
     display: block !important;
@@ -847,6 +858,11 @@
 
   .title-line--flex {
     gap: 0.15em;
+  }
+
+  .manifesto-sub {
+    font-size: 0.74rem;
+    line-height: 1.35;
   }
 
   .sticker-badge {

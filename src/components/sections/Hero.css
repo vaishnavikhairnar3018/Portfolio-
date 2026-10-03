@@ -392,13 +392,14 @@
   gap: 0.5rem;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-  max-width: 240px;
+  max-width: 340px;
 }
 
 .manifesto-dash {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
+  line-height: 1.45;
   opacity: 0.9;
 }
 
@@ -412,8 +413,9 @@
 
 .manifesto-sub {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
+  line-height: 1.45;
   margin: 0;
   color: rgba(255, 255, 255, 0.92);
 }

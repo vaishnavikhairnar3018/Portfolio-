@@ -82,9 +82,9 @@ export function Hero() {
         </div>
 
         <h1 className="creatie-hero-title">
-          <span className="title-line">CODE THAT</span>
+          <span className="title-line">FROM FIRST</span>
           <span className="title-line title-line--flex">
-            MAKES
+            COMMIT TO
             {/* Inline Slanted Eat Sticker */}
             <span className="sticker-badge sticker-illustration">
               <span className="paperclip-icon paperclip-icon--pink" aria-hidden="true" />
@@ -111,9 +111,9 @@ export function Hero() {
               </span>
               <span className="sticker-text">Sleep</span>
             </span>
-            SYSTEMS
+            LIVE IN
           </span>
-          <span className="title-line">FEEL EFFORTLESS</span>
+          <span className="title-line">PRODUCTION</span>
         </h1>
       </div>
 
@@ -123,8 +123,7 @@ export function Hero() {
         <div className="creatie-manifesto">
           <span className="manifesto-dash">—</span>
           <div className="manifesto-copy">
-            <p className="manifesto-lead">Not just syntax.</p>
-            <p className="manifesto-sub">I build resilient architectures with 60 FPS polish and 99.9% uptime.</p>
+            <p className="manifesto-sub">I build reliable software with clean architecture, a smooth user experience, and code that&apos;s easy to maintain.</p>
           </div>
         </div>
 
