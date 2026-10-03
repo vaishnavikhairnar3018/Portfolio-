@@ -61,6 +61,18 @@
 
 /* ── TABLET PORTRAIT (max 768px) ── */
 @media (max-width: 768px) {
+  /* Header — ensure hamburger icon isn't clipped */
+  .header-container {
+    padding-right: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .logo-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+
   /* Hero */
   .creatie-hero {
     min-height: 100svh;
@@ -273,6 +285,26 @@
 
 /* ── MOBILE (max 640px) ── */
 @media (max-width: 640px) {
+  /* Header — prevent hamburger from being clipped */
+  .header {
+    overflow: visible;
+  }
+
+  .header-container {
+    padding: 0 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .logo-text {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-menu-btn {
+    flex-shrink: 0;
+  }
+
   /* Hero */
   .creatie-hero {
     padding: calc(var(--nav-height, 56px) + 0.5rem) 0.75rem 1.25rem;
@@ -282,22 +314,49 @@
     font-size: clamp(1.8rem, 9vw, 2.8rem);
   }
 
+  /* Stickers — display as inline row, not stacked */
   .sticker-badge {
-    padding: 0.3rem 1.2rem 0.3rem 0.4rem;
-    border-radius: 8px;
+    padding: 0.25rem 1rem 0.25rem 0.35rem;
+    border-radius: 7px;
+    transform: rotate(0deg) !important;
+    margin-bottom: 0;
+  }
+
+  .sticker-uiux {
+    transform: rotate(0deg) !important;
+    margin-bottom: 0;
   }
 
   .sticker-text {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .sticker-dot {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .sticker-dot svg {
+    width: 9px;
+    height: 9px;
+  }
+
+  .paperclip-icon {
+    display: none;
   }
 
   .creatie-hero-subtitle {
     font-size: 0.78rem;
+  }
+
+  /* Hide confetti and floating doodles on mobile — they cluster in one spot */
+  .confetti-zigzag,
+  .confetti-diamond,
+  .confetti-mint,
+  .floating-paperclip,
+  .doodle-spiral,
+  .doodle-bowl {
+    display: none;
   }
 
   /* Dock */
@@ -341,11 +400,17 @@
   /* ID Card — Hide decorative accents on mobile for clean look */
   .id-card-section {
     padding: 2rem 0.5rem;
+    overflow: hidden;
+  }
+
+  .id-card-hint {
+    font-size: 0.65rem;
+    margin-bottom: 2rem;
   }
 
   .id-hanging-rig {
     width: 100%;
-    max-width: 360px;
+    max-width: 340px;
   }
 
   /* Hide accent elements on mobile */
@@ -355,76 +420,127 @@
   .charm-butterfly--right,
   .charm-gem-heart,
   .gold-star-charm--bottom,
-  .gold-star-charm--right {
+  .gold-star-charm--right,
+  .craft-beads-container {
     display: none;
   }
 
+  /* Fix ID card content overflowing bottom */
   .inner-id-card-content {
-    grid-template-columns: 1fr 80px;
-    gap: 0.5rem;
-    padding: 0.2rem 0.3rem;
+    grid-template-columns: 1fr 75px;
+    gap: 0.35rem;
+    padding: 0.15rem 0.25rem;
+    top: 44%;
+    bottom: 17%;
+    left: 20%;
+    right: 22%;
+    overflow: hidden;
   }
 
   .id-brand-title {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .id-brand-subtitle {
-    font-size: 0.38rem;
+    font-size: 0.35rem;
+    line-height: 1.2;
+  }
+
+  .id-brand-header {
+    margin-bottom: 0.2rem;
   }
 
   .field-label {
-    font-size: 0.48rem;
+    font-size: 0.44rem;
   }
 
   .field-name {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .field-location,
   .field-specialty {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
+  }
+
+  .field-handwritten {
+    font-size: 1.05rem;
+  }
+
+  .id-field-group {
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
   }
 
   .id-photo-frame {
-    width: 75px;
-    height: 88px;
+    width: 70px;
+    height: 82px;
   }
 
   .id-rubber-stamp {
-    width: 38px;
-    height: 38px;
-    top: 5px;
-    right: 72px;
+    width: 34px;
+    height: 34px;
+    top: 2px;
+    right: 68px;
   }
 
   .stamp-text {
-    font-size: 0.35rem;
+    font-size: 0.32rem;
   }
 
   .stamp-year {
-    font-size: 0.42rem;
-  }
-
-  .id-card-motto {
-    font-size: 0.42rem;
-  }
-
-  .id-number {
-    font-size: 0.48rem;
-  }
-
-  .barcode-stripes {
-    height: 22px;
-  }
-
-  .barcode-numbers {
     font-size: 0.38rem;
   }
 
-  /* Projects */
+  .id-card-motto {
+    font-size: 0.38rem;
+    margin-top: 0.2rem;
+  }
+
+  .id-number {
+    font-size: 0.44rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .barcode-stripes {
+    height: 14px;
+  }
+
+  .barcode-numbers {
+    font-size: 0.35rem;
+  }
+
+  /* Projects — fix content overflow in browser cards */
   .creatie-projects-section {
     padding: 3rem 0.75rem;
+    overflow: hidden;
+  }
+
+  .paperclip-browser-card {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .browser-card-header {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+  }
+
+  .browser-url-bar {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+    font-size: 0.55rem;
+  }
+
+  .browser-metric-pill {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.35rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .browser-image-wrapper {
@@ -441,6 +557,15 @@
 
   .card-project-summary {
     font-size: 0.72rem;
+  }
+
+  .card-tags-group {
+    overflow: hidden;
+  }
+
+  .card-mini-tag {
+    font-size: 0.58rem;
+    padding: 0.1rem 0.35rem;
   }
 
   /* Experience */
@@ -603,80 +728,112 @@
 
 /* ── SMALL PHONE (max 480px) ── */
 @media (max-width: 480px) {
+  /* Header */
+  .header-container {
+    padding: 0 0.5rem;
+  }
+
+  .logo-text {
+    max-width: 120px;
+  }
+
   .creatie-hero-title {
-    font-size: clamp(1.6rem, 10vw, 2.2rem);
+    font-size: clamp(1.5rem, 10vw, 2rem);
   }
 
   .title-line--flex {
-    gap: 0.2em;
+    gap: 0.15em;
   }
 
   .sticker-badge {
-    padding: 0.25rem 0.9rem 0.25rem 0.35rem;
-    border-radius: 7px;
+    padding: 0.2rem 0.6rem 0.2rem 0.3rem;
+    border-radius: 6px;
   }
 
   .sticker-text {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .sticker-dot {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .sticker-dot svg {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
   }
 
   /* ID Card */
   .id-hanging-rig {
-    max-width: 320px;
+    max-width: 300px;
   }
 
   .inner-id-card-content {
-    grid-template-columns: 1fr 65px;
-    gap: 0.35rem;
+    grid-template-columns: 1fr 60px;
+    gap: 0.25rem;
+    top: 45%;
+    bottom: 18%;
   }
 
   .id-brand-title {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
+  }
+
+  .id-brand-subtitle {
+    font-size: 0.3rem;
   }
 
   .field-name {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
   }
 
   .field-location,
   .field-specialty {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
+  }
+
+  .field-handwritten {
+    font-size: 0.85rem;
   }
 
   .id-photo-frame {
-    width: 60px;
-    height: 72px;
+    width: 55px;
+    height: 65px;
   }
 
   .id-rubber-stamp {
-    width: 32px;
-    height: 32px;
-    right: 55px;
+    width: 28px;
+    height: 28px;
+    right: 52px;
+    top: 0;
   }
 
-  .ticket-stub-wrapper {
-    width: 115px;
-    height: 78px;
+  .stamp-text {
+    font-size: 0.28rem;
   }
 
-  .lily-accent {
-    width: 80px;
+  .stamp-year {
+    font-size: 0.32rem;
   }
 
-  .charm-butterfly--top,
-  .charm-butterfly--right,
-  .charm-gem-heart {
-    display: none;
+  .id-card-motto {
+    font-size: 0.32rem;
+  }
+
+  .barcode-stripes {
+    height: 10px;
+  }
+
+  /* Projects */
+  .browser-url-bar {
+    max-width: 110px;
+    font-size: 0.5rem;
+  }
+
+  .browser-metric-pill {
+    font-size: 0.48rem;
+    padding: 0.08rem 0.3rem;
   }
 
   /* Stats */

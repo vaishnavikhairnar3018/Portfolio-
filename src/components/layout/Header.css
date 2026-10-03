@@ -271,23 +271,49 @@
 
   .mobile-menu-btn {
     display: flex;
+    flex-shrink: 0;
   }
 
   .logo-text {
     display: block;
     font-size: 0.8125rem;
     letter-spacing: 0.16em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+
+  .header-container {
+    overflow: visible;
+    gap: 0.5rem;
+  }
+
+  /* Ensure CTA doesn't push hamburger off-screen */
+  .nav-actions {
+    flex-shrink: 0;
+    gap: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .header {
     height: 64px;
+    overflow: visible;
+  }
+
+  .header-container {
+    padding: 0 0.5rem;
   }
 
   .logo-mark {
     width: 32px;
     height: 32px;
     font-size: 0.75rem;
+  }
+
+  .logo-text {
+    max-width: 120px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
   }
 }

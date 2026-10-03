@@ -126,8 +126,11 @@ export function IdCard() {
     // Only apply gentle inertia when the card is within the visible viewport
     if (rect.bottom > 0 && rect.top < viewportHeight) {
       const scrollVelocity = deltaY / deltaTime; // px per ms (positive when scrolling down)
-      // Gentle inertia tilt strictly clamped to ±2.5 degrees max
-      const tilt = Math.max(-2.5, Math.min(2.5, scrollVelocity * 1.8));
+      // On mobile (≤640px), drastically reduce tilt to avoid excessive waving
+      const isMobile = window.innerWidth <= 640;
+      const multiplier = isMobile ? 0.4 : 1.8;
+      const maxTilt = isMobile ? 1.2 : 2.5;
+      const tilt = Math.max(-maxTilt, Math.min(maxTilt, scrollVelocity * multiplier));
       animState.current.scrollTiltTarget = tilt;
     } else {
       animState.current.scrollTiltTarget = 0;
