@@ -254,11 +254,6 @@ export function IdCard() {
           </div>
 
           {/* Sparkling Butterfly & Gemstone Charms */}
-          <div className="charm-butterfly charm-butterfly--top" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 4c.8-2 3-3 5-3s3 2 3 4c0 3-3 6-7 8 4 2 7 5 7 8 0 2-1 4-3 4s-4.2-1-5-3c-.8 2-3 3-5 3s-3-2-3-4c0-3 3-6 7-8-4-2-7-5-7-8 0-2 1-4 3-4s4.2 1 5 3z" />
-            </svg>
-          </div>
           <div className="charm-butterfly charm-butterfly--right" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 4c.8-2 3-3 5-3s3 2 3 4c0 3-3 6-7 8 4 2 7 5 7 8 0 2-1 4-3 4s-4.2-1-5-3c-.8 2-3 3-5 3s-3-2-3-4c0-3 3-6 7-8-4-2-7-5-7-8 0-2 1-4 3-4s4.2 1 5 3z" />

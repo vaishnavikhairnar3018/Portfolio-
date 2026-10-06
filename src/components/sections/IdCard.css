@@ -101,7 +101,7 @@
 /* Slanted Vintage Perforated Postcard (Tucked Behind Top-Left of Card) */
 .ticket-stub-wrapper {
   position: absolute;
-  top: 22%;
+  top: 29%;
   left: -2%;
   width: 210px;
   height: 140px;
@@ -187,14 +187,7 @@
   animation: butterfly-flutter 4s ease-in-out infinite;
 }
 
-.charm-butterfly--top {
-  top: 24%;
-  left: 12%;
-  width: 22px;
-  height: 22px;
-  color: #ec4899;
-  transform: rotate(90deg);
-}
+
 
 .charm-butterfly--right {
   bottom: 28%;
