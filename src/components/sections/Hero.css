@@ -26,9 +26,9 @@
     repeating-linear-gradient(to bottom, transparent 0 41px, rgba(29, 27, 25, 0.09) 41px 42px);
 }
 
-/* Entrance waits for the terminal intro when it plays */
+/* Entrance waits for the chat-bubble intro when it plays */
 .vk-hero--intro {
-  --intro: 2.25s;
+  --intro: 1.95s;
 }
 
 .vk-hero-inner {
@@ -55,7 +55,7 @@
 }
 
 /* ==========================================================================
-   Terminal splash
+   Chat-bubble splash
    ========================================================================== */
 
 .vk-splash {
@@ -66,87 +66,61 @@
   place-items: center;
   padding: 1.5rem;
   background-color: var(--color-paper);
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 41px, rgba(29, 27, 25, 0.09) 41px 42px);
   pointer-events: none;
-  animation: vk-splash-out 0.45s ease forwards 2s;
+  animation: vk-splash-out 0.45s ease forwards 1.75s;
 }
 
 @keyframes vk-splash-out {
-  to { opacity: 0; visibility: hidden; transform: scale(1.03); }
+  to { opacity: 0; visibility: hidden; }
 }
 
-.vk-terminal {
-  width: min(420px, 100%);
-  background: #1d1b19;
-  color: #f5f3ea;
-  border-radius: 14px;
-  box-shadow: 6px 6px 0 var(--hero-orange), 0 18px 40px rgba(0, 0, 0, 0.18);
-  transform: rotate(-1.5deg);
-  overflow: hidden;
-  font-family: var(--font-mono);
-  text-align: left;
-  animation: vk-pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+/* Both bubbles share one grid cell; the second replaces the first */
+.vk-chat {
+  display: grid;
 }
 
-.vk-terminal-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.6rem 0.85rem;
-  background: rgba(255, 255, 255, 0.06);
+.vk-chat-bubble {
+  grid-area: 1 / 1;
+  justify-self: center;
+  padding: 0.55rem 1.1rem 0.6rem;
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--hero-yellow);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px 14px 14px 3px;
+  box-shadow: 3px 3px 0 rgba(29, 27, 25, 0.85);
 }
 
-.vk-terminal-bar span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ff5f57;
-}
-.vk-terminal-bar span:nth-child(2) { background: #febc2e; }
-.vk-terminal-bar span:nth-child(3) { background: #28c840; }
-
-.vk-terminal-bar em {
-  margin-left: auto;
-  font-style: normal;
-  font-size: 0.72rem;
-  opacity: 0.55;
+.vk-chat-bubble--first {
+  animation: vk-bubble-swap 0.01s linear forwards 0.9s;
 }
 
-.vk-terminal-body {
-  padding: 1rem 1.1rem 1.25rem;
-  font-size: 0.95rem;
-  line-height: 1.9;
-}
-
-.vk-terminal-body b {
-  color: var(--hero-mint);
-  font-weight: 700;
-}
-
-.vk-terminal-reply b {
-  color: var(--hero-pink);
-}
-
-.vk-type-char {
+.vk-chat-bubble--second {
   opacity: 0;
-  animation: vk-type 0.01s linear forwards;
+  animation: vk-bubble-in 0.01s linear forwards 0.9s;
 }
 
-@keyframes vk-type {
+@keyframes vk-bubble-swap {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes vk-bubble-in {
   to { opacity: 1; }
 }
 
-.vk-caret {
+.vk-type-char {
   display: inline-block;
-  width: 0.55em;
-  height: 1.05em;
-  margin-left: 2px;
-  vertical-align: -0.15em;
-  background: var(--hero-yellow);
-  animation: vk-blink 0.8s steps(1) infinite;
+  opacity: 0;
+  transform: translateY(0.25em);
+  animation: vk-type 0.22s ease-out forwards;
+}
+
+@keyframes vk-type {
+  to { opacity: 1; transform: none; }
 }
 
 @keyframes vk-blink {
@@ -234,13 +208,15 @@
 .vk-letter {
   display: inline-block;
   opacity: 0;
-  animation: vk-letter-drop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: vk-letter-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(var(--intro) + var(--d, 0s));
 }
 
-@keyframes vk-letter-drop {
-  from { opacity: 0; transform: translateY(-0.4em) rotate(-8deg); }
-  to { opacity: 1; transform: none; }
+/* Letters rise from below as faded grey, then settle into ink */
+@keyframes vk-letter-rise {
+  0% { opacity: 0; transform: translateY(0.55em); color: #8f8b85; }
+  45% { opacity: 0.85; color: #8f8b85; }
+  100% { opacity: 1; transform: none; color: var(--ink); }
 }
 
 .vk-letter:hover {
@@ -325,6 +301,19 @@
   right: -4rem;
   background: var(--hero-mint);
   rotate: 3deg;
+}
+
+.vk-note--yellow.vk-pop { animation-name: vk-slide-left; }
+.vk-note--mint.vk-pop { animation-name: vk-slide-right; }
+
+@keyframes vk-slide-left {
+  from { opacity: 0; transform: translateX(-48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes vk-slide-right {
+  from { opacity: 0; transform: translateX(48px); }
+  to { opacity: 1; transform: none; }
 }
 
 .vk-clip {
@@ -523,6 +512,67 @@
   height: 2.2rem;
   background: var(--hero-blue);
   color: #fff;
+}
+
+/* ==========================================================================
+   Inspect lens — inverts whatever it hovers, like a selection box
+   ========================================================================== */
+
+.vk-lens,
+.vk-lens-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  transform: translate(var(--lx, 0), var(--ly, 0)) scale(0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.vk-lens {
+  background: #fff;
+  mix-blend-mode: difference;
+}
+
+.vk-hero--lens .vk-lens,
+.vk-hero--lens .vk-lens-frame {
+  opacity: 1;
+  transform: translate(var(--lx, 0), var(--ly, 0));
+}
+
+.vk-lens-frame {
+  z-index: 6;
+  outline: 1.5px solid #3b5bfd;
+}
+
+.vk-lens-frame i {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border: 1.5px solid #3b5bfd;
+}
+
+.vk-lens-frame i:nth-child(1) { top: -5px; left: -5px; }
+.vk-lens-frame i:nth-child(2) { top: -5px; right: -5px; }
+.vk-lens-frame i:nth-child(3) { bottom: -5px; left: -5px; }
+.vk-lens-frame i:nth-child(4) { bottom: -5px; right: -5px; }
+
+.vk-lens-label {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  padding: 0.2rem 0.5rem;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  background: #3b5bfd;
+  border-radius: 4px;
 }
 
 /* ==========================================================================

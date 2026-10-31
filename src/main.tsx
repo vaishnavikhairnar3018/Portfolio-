@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Header } from './components/layout/Header'
 import { Hero } from './components/sections/Hero'
+import { AboutMe } from './components/sections/AboutMe'
 import { IdCard } from './components/sections/IdCard'
 import { Projects } from './components/sections/Projects'
 import { Services } from './components/sections/Services'
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <main>
           <Hero />
+          <AboutMe />
           <div className="creatie-paper-body">
             <IdCard />
             <Projects />

@@ -1,0 +1,279 @@
+/* ==========================================================================
+   About me — taped polaroids, handwritten note, torn-tape skill labels
+   ========================================================================== */
+
+.vk-about {
+  --ink: #1d1b19;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 1.5rem 6rem;
+  color: var(--ink);
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 41px, rgba(29, 27, 25, 0.09) 41px 42px);
+}
+
+/* ── Arc divider ── */
+.vk-about-arc {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90px;
+}
+
+.vk-about-arc svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: rgba(29, 27, 25, 0.55);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+}
+
+.vk-about--in .vk-about-arc svg {
+  animation: vk-about-draw 1.4s ease-out forwards;
+}
+
+@keyframes vk-about-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.vk-about-arc span {
+  position: absolute;
+  left: 8%;
+  bottom: -1.6rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  rotate: -4deg;
+}
+
+.vk-about-inner {
+  position: relative;
+  max-width: 1080px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Scroll reveal ── */
+.vk-reveal {
+  opacity: 0;
+  translate: 0 18px;
+}
+
+.vk-about--in .vk-reveal {
+  animation: vk-about-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes vk-about-pop {
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* ── Heading ── */
+.vk-about-title {
+  padding: 0.35rem 1.1rem;
+  border: 2px solid var(--ink);
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.vk-about-title span {
+  color: #f26b3a;
+}
+
+/* ── Handwritten paragraph ── */
+.vk-about-copy {
+  max-width: 34rem;
+  margin-top: 2rem;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.vk-emoji {
+  display: inline-block;
+  margin: 0 0.25rem;
+  animation: vk-emoji-bob 2.8s ease-in-out infinite;
+}
+
+.vk-emoji:nth-of-type(2) { animation-delay: -0.9s; }
+.vk-emoji:nth-of-type(3) { animation-delay: -1.8s; }
+
+@keyframes vk-emoji-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-8deg); }
+}
+
+/* ── Torn tape labels ── */
+.vk-tapes {
+  margin-top: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 0.8rem 1.4rem;
+}
+
+.vk-tape-label {
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
+}
+
+.vk-tape-text,
+.vk-tape-chip {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  /* Ragged left and right edges, like hand-torn tape */
+  clip-path: polygon(
+    0 4%, 3% 0, 97% 2%, 100% 0, 98% 22%, 100% 40%, 97% 58%, 100% 78%, 98% 100%,
+    60% 97%, 3% 100%, 1% 80%, 3% 62%, 0 44%, 2% 24%
+  );
+  transition: transform 0.2s ease;
+}
+
+.vk-tape-text {
+  padding: 0.55rem 1.3rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+}
+
+.vk-tape-chip {
+  width: 2.6rem;
+  font-size: 1.15rem;
+}
+
+.vk-tape-label:hover .vk-tape-text { transform: rotate(-2deg) scale(1.04); }
+.vk-tape-label:hover .vk-tape-chip { transform: rotate(8deg) scale(1.1); }
+
+.vk-tape-label--yellow .vk-tape-text,
+.vk-tape-label--yellow .vk-tape-chip { background: #f3d34a; }
+
+.vk-tape-label--green .vk-tape-text,
+.vk-tape-label--green .vk-tape-chip { background: #34c770; }
+
+.vk-tape-label--pink .vk-tape-text,
+.vk-tape-label--pink .vk-tape-chip { background: #ff7eb0; color: #fff; }
+
+.vk-tape-label--blue .vk-tape-text,
+.vk-tape-label--blue .vk-tape-chip { background: #3b5bfd; color: #fff; }
+
+.vk-tape-label--yellow { rotate: -1.5deg; }
+.vk-tape-label--green { rotate: 1deg; }
+.vk-tape-label--pink { rotate: 1.5deg; }
+.vk-tape-label--blue { rotate: -1deg; }
+
+/* ── Polaroids ── */
+.vk-polaroid {
+  position: absolute;
+  z-index: 0;
+  width: clamp(150px, 15vw, 200px);
+  margin: 0;
+  padding: 10px 10px 0;
+  background: #fff;
+  box-shadow: 0 14px 28px -10px rgba(0, 0, 0, 0.35);
+  transition: rotate 0.3s ease, scale 0.3s ease;
+}
+
+.vk-polaroid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.vk-polaroid figcaption {
+  padding: 0.35rem 0 0.55rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.vk-polaroid--left {
+  left: -1rem;
+  top: 4rem;
+  rotate: -7deg;
+}
+
+.vk-polaroid--left img {
+  object-position: 50% 20%;
+}
+
+.vk-polaroid--right {
+  right: -1rem;
+  top: -1.5rem;
+  rotate: 6deg;
+}
+
+.vk-polaroid:hover {
+  rotate: 0deg;
+  scale: 1.04;
+  z-index: 2;
+}
+
+.vk-tape {
+  position: absolute;
+  top: -12px;
+  width: 64px;
+  height: 22px;
+  background: rgba(187, 218, 254, 0.75);
+}
+
+.vk-tape--l {
+  left: -16px;
+  rotate: -32deg;
+}
+
+.vk-tape--r {
+  right: -16px;
+  rotate: 34deg;
+  background: rgba(243, 234, 154, 0.8);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .vk-polaroid--left { left: -2.5rem; top: 9rem; }
+  .vk-polaroid--right { right: -2.5rem; }
+}
+
+@media (max-width: 760px) {
+  .vk-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 0 1rem;
+  }
+
+  .vk-about-inner > :not(.vk-polaroid) {
+    grid-column: 1 / -1;
+  }
+
+  .vk-polaroid {
+    position: relative;
+    inset: auto;
+    width: min(150px, 100%);
+    margin-bottom: 2.4rem;
+  }
+
+  .vk-tapes {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vk-reveal { opacity: 1; translate: none; }
+  .vk-about-arc svg { stroke-dashoffset: 0; }
+}

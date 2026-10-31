@@ -1,12 +1,12 @@
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import portrait from '../../assets/id_card_portrait.jpg';
 import lily from '../../assets/real_lily_flower.png';
 import goldStar from '../../assets/real_gold_star.png';
 import './Hero.css';
 
 const SPLASH_KEY = 'vk-splash-seen';
-const SPLASH_CMD = 'npm run hello';
-const SPLASH_REPLY = "hi, i'm vaishnavi ✿";
+const SPLASH_FIRST = 'Oh, hello world!';
+const SPLASH_SECOND = 'You found me ✿';
 const NAME = 'VAISHNAVI';
 
 // Show the terminal intro once per browser session.
@@ -31,15 +31,74 @@ function typed(text: string, startMs: number, stepMs: number) {
 
 const delay = (s: number) => ({ '--d': `${s}s` }) as CSSProperties;
 
+const LENS_SIZE = 220;
+
+// Inverting "inspect element" box that trails the mouse across the hero.
+function useInspectLens() {
+  const heroRef = useRef<HTMLElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    let frame = 0;
+    const target = { x: 0, y: 0 };
+    const pos = { x: 0, y: 0 };
+
+    const tick = () => {
+      pos.x += (target.x - pos.x) * 0.18;
+      pos.y += (target.y - pos.y) * 0.18;
+      hero.style.setProperty('--lx', `${pos.x - LENS_SIZE / 2}px`);
+      hero.style.setProperty('--ly', `${pos.y - LENS_SIZE / 2}px`);
+      if (labelRef.current) {
+        labelRef.current.textContent = `div.vaishnavi  ${LENS_SIZE}×${LENS_SIZE} @ ${Math.round(pos.x)},${Math.round(pos.y)}`;
+      }
+      frame = Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > 0.5 ? requestAnimationFrame(tick) : 0;
+    };
+
+    const onMove = (e: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+      target.x = e.clientX - rect.left;
+      target.y = e.clientY - rect.top;
+      if (!hero.classList.contains('vk-hero--lens')) {
+        pos.x = target.x;
+        pos.y = target.y;
+        hero.classList.add('vk-hero--lens');
+      }
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+    const onLeave = () => hero.classList.remove('vk-hero--lens');
+
+    hero.addEventListener('pointermove', onMove);
+    hero.addEventListener('pointerleave', onLeave);
+    return () => {
+      cancelAnimationFrame(frame);
+      hero.removeEventListener('pointermove', onMove);
+      hero.removeEventListener('pointerleave', onLeave);
+    };
+  }, []);
+
+  return { heroRef, labelRef };
+}
+
 export function Hero() {
   const [showSplash, setShowSplash] = useState(shouldShowSplash);
+  const { heroRef, labelRef } = useInspectLens();
 
   return (
     <section
+      ref={heroRef}
       className={`vk-hero ${showSplash ? 'vk-hero--intro' : ''}`}
       id="hero"
       aria-label="Introduction"
     >
+      <div className="vk-lens" aria-hidden="true" />
+      <div className="vk-lens-frame" aria-hidden="true">
+        <i /><i /><i /><i />
+        <span ref={labelRef} className="vk-lens-label" />
+      </div>
+
       {showSplash && (
         <div
           className="vk-splash"
@@ -48,18 +107,9 @@ export function Hero() {
             if (e.animationName === 'vk-splash-out') setShowSplash(false);
           }}
         >
-          <div className="vk-terminal">
-            <div className="vk-terminal-bar">
-              <span /><span /><span />
-              <em>~/vaishnavi</em>
-            </div>
-            <div className="vk-terminal-body">
-              <p><b>$</b> {typed(SPLASH_CMD, 250, 55)}</p>
-              <p className="vk-terminal-reply">
-                <b>&gt;</b> {typed(SPLASH_REPLY, 1150, 40)}
-                <i className="vk-caret" />
-              </p>
-            </div>
+          <div className="vk-chat">
+            <p className="vk-chat-bubble vk-chat-bubble--first">{typed(SPLASH_FIRST, 150, 45)}</p>
+            <p className="vk-chat-bubble vk-chat-bubble--second">{typed(SPLASH_SECOND, 950, 45)}</p>
           </div>
         </div>
       )}
@@ -103,7 +153,7 @@ export function Hero() {
             <span className="visually-hidden">Vaishnavi Khairnar</span>
             <span className="vk-name-letters" aria-hidden="true">
               {[...NAME].map((ch, i) => (
-                <span key={i} className="vk-letter" style={delay(0.2 + i * 0.06)}>{ch}</span>
+                <span key={i} className="vk-letter" style={delay(0.25 + i * 0.08)}>{ch}</span>
               ))}
               <span className="vk-name-cursor" />
             </span>
