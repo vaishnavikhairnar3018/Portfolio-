@@ -31,10 +31,9 @@ const delay = (s: number) => ({ '--d': `${s}s` }) as CSSProperties;
 
 const LENS_SIZE = 220;
 
-// Inverting "inspect element" box that trails the mouse across the hero.
+// Inverting selection box that trails the mouse, only while it is over hero content.
 function useInspectLens() {
   const heroRef = useRef<HTMLElement>(null);
-  const labelRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -45,17 +44,24 @@ function useInspectLens() {
     const pos = { x: 0, y: 0 };
 
     const tick = () => {
-      pos.x += (target.x - pos.x) * 0.18;
-      pos.y += (target.y - pos.y) * 0.18;
+      pos.x += (target.x - pos.x) * 0.2;
+      pos.y += (target.y - pos.y) * 0.2;
       hero.style.setProperty('--lx', `${pos.x - LENS_SIZE / 2}px`);
       hero.style.setProperty('--ly', `${pos.y - LENS_SIZE / 2}px`);
-      if (labelRef.current) {
-        labelRef.current.textContent = `div.vaishnavi  ${LENS_SIZE}×${LENS_SIZE} @ ${Math.round(pos.x)},${Math.round(pos.y)}`;
-      }
       frame = Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > 0.5 ? requestAnimationFrame(tick) : 0;
     };
 
+    const hide = () => hero.classList.remove('vk-hero--lens');
+
     const onMove = (e: PointerEvent) => {
+      // Content blocks shrink to fit, so hitting the wrapper itself means empty space
+      const el = e.target as Element;
+      const inner = el.closest('.vk-hero-inner');
+      if (!inner || el === inner) {
+        hide();
+        return;
+      }
+
       const rect = hero.getBoundingClientRect();
       target.x = e.clientX - rect.left;
       target.y = e.clientY - rect.top;
@@ -66,23 +72,24 @@ function useInspectLens() {
       }
       if (!frame) frame = requestAnimationFrame(tick);
     };
-    const onLeave = () => hero.classList.remove('vk-hero--lens');
 
     hero.addEventListener('pointermove', onMove);
-    hero.addEventListener('pointerleave', onLeave);
+    hero.addEventListener('pointerleave', hide);
+    window.addEventListener('scroll', hide, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       hero.removeEventListener('pointermove', onMove);
-      hero.removeEventListener('pointerleave', onLeave);
+      hero.removeEventListener('pointerleave', hide);
+      window.removeEventListener('scroll', hide);
     };
   }, []);
 
-  return { heroRef, labelRef };
+  return heroRef;
 }
 
 export function Hero() {
   const [showSplash, setShowSplash] = useState(shouldShowSplash);
-  const { heroRef, labelRef } = useInspectLens();
+  const heroRef = useInspectLens();
 
   return (
     <section
@@ -94,7 +101,6 @@ export function Hero() {
       <div className="vk-lens" aria-hidden="true" />
       <div className="vk-lens-frame" aria-hidden="true">
         <i /><i /><i /><i />
-        <span ref={labelRef} className="vk-lens-label" />
       </div>
 
       {showSplash && (

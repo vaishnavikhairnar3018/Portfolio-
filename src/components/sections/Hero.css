@@ -544,35 +544,20 @@
 
 .vk-lens-frame {
   z-index: 6;
-  outline: 1.5px solid #3b5bfd;
 }
 
+/* Solid corner handles, like a design-tool selection */
 .vk-lens-frame i {
   position: absolute;
-  width: 9px;
-  height: 9px;
-  background: #fff;
-  border: 1.5px solid #3b5bfd;
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
 }
 
 .vk-lens-frame i:nth-child(1) { top: -5px; left: -5px; }
 .vk-lens-frame i:nth-child(2) { top: -5px; right: -5px; }
 .vk-lens-frame i:nth-child(3) { bottom: -5px; left: -5px; }
 .vk-lens-frame i:nth-child(4) { bottom: -5px; right: -5px; }
-
-.vk-lens-label {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  padding: 0.2rem 0.5rem;
-  white-space: pre;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: #fff;
-  background: #3b5bfd;
-  border-radius: 4px;
-}
 
 /* ==========================================================================
    Floating décor
