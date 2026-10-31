@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Projects.css';
 import verdictDashboard from '../../assets/verdict-dashboard.png';
+import legalLensApp from '../../assets/legallens-app.png';
 
 export type CreatieProject = {
   id: string;
@@ -31,17 +32,17 @@ const CREATIE_PROJECTS: CreatieProject[] = [
     githubUrl: 'https://github.com/vaishnavikhairnar3018/Verdict',
   },
   {
-    id: 'atlas',
-    name: 'Atlas 3D Engine',
-    category: 'Creative Tech · Three.js & WebGL',
-    summary: 'Procedural 3D planetary terrain generator rendering 100k+ instanced particles at solid 60 FPS.',
-    metric: '🎮 60 FPS on Mobile',
-    tags: ['Three.js', 'WebGL 2.0', 'GLSL Shaders', 'React 19'],
-    image: 'https://cdn.dribbble.com/userupload/24599416/file/original-1ae5075dcd129aebb16bdbca24b41ac7.png?resize=1024x768&vertical=center',
+    id: 'legallens',
+    name: 'LegalLens AI',
+    category: 'Computer Vision · SIH 2026',
+    summary: 'Scans packaged products and checks their labels against India’s Legal Metrology rules, then generates tamper-proof legal notices in seconds.',
+    metric: '⚖️ 8 LMPC Rule Checks',
+    tags: ['FastAPI', 'Flutter', 'EasyOCR', 'OpenCV'],
+    image: legalLensApp,
     tilt: 1.5,
     clipColor: 'green',
-    liveUrl: 'https://atlas-3d.dev',
-    githubUrl: 'https://github.com/vaishnavi/atlas-engine',
+    liveUrl: 'https://legal-lens-ai-alpha.vercel.app',
+    githubUrl: 'https://github.com/vaishnavikhairnar3018/LegalLens-AI',
   },
   {
     id: 'rhythm',
