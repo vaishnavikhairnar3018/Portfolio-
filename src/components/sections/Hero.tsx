@@ -1,213 +1,161 @@
-import { useState } from 'react';
-import { Magnetic } from '../react-bits';
-import heroBg from '../../assets/nature-hills-sky-clouds-dawn-grass-field-tree-green-landscap.jpg';
+import { useState, type CSSProperties } from 'react';
+import portrait from '../../assets/id_card_portrait.jpg';
+import lily from '../../assets/real_lily_flower.png';
+import goldStar from '../../assets/real_gold_star.png';
 import './Hero.css';
 
-export function Hero() {
-  const [activeDock, setActiveDock] = useState<string | null>(null);
+const SPLASH_KEY = 'vk-splash-seen';
+const SPLASH_CMD = 'npm run hello';
+const SPLASH_REPLY = "hi, i'm vaishnavi ✿";
+const NAME = 'VAISHNAVI';
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+// Show the terminal intro once per browser session.
+function shouldShowSplash() {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    if (sessionStorage.getItem(SPLASH_KEY)) return false;
+    sessionStorage.setItem(SPLASH_KEY, '1');
+  } catch {
+    // storage blocked: still show the intro
+  }
+  return true;
+}
+
+function typed(text: string, startMs: number, stepMs: number) {
+  return [...text].map((ch, i) => (
+    <span key={i} className="vk-type-char" style={{ animationDelay: `${startMs + i * stepMs}ms` }}>
+      {ch === ' ' ? ' ' : ch}
+    </span>
+  ));
+}
+
+const delay = (s: number) => ({ '--d': `${s}s` }) as CSSProperties;
+
+export function Hero() {
+  const [showSplash, setShowSplash] = useState(shouldShowSplash);
 
   return (
-    <section className="creatie-hero" id="hero" aria-label="Hero Section">
-      {/* ── Background Meadow Image ── */}
-      <div className="creatie-hero-bg" aria-hidden="true">
-        <img
-          src={heroBg}
-          alt="Lush green rolling hills and clouds"
-          className="creatie-hero-bg-img"
-        />
-        <div className="creatie-hero-overlay" />
-      </div>
-
-      {/* ── Floating SVG Doodles & Confetti ── */}
-      <div className="creatie-doodles" aria-hidden="true">
-        {/* Yellow Spiral Doodle */}
-        <svg className="doodle-spiral" viewBox="0 0 100 80" fill="none">
-          <path
-            d="M20,60 C10,40 25,15 45,20 C65,25 70,55 50,65 C30,75 20,45 35,35 C50,25 65,40 55,50"
-            stroke="#fac900"
-            strokeWidth="5"
-            strokeLinecap="round"
-          />
-        </svg>
-
-        {/* Green Wireframe Geometry */}
-        <svg className="doodle-bowl" viewBox="0 0 120 120" fill="none">
-          <path
-            d="M25,45 C25,25 95,25 95,45 C95,65 25,65 25,45 Z"
-            stroke="#c8ea1d"
-            strokeWidth="4"
-          />
-          <path
-            d="M25,50 C25,85 95,85 95,50"
-            stroke="#c8ea1d"
-            strokeWidth="4"
-          />
-          <path
-            d="M35,80 C35,105 85,105 85,80"
-            stroke="#c8ea1d"
-            strokeWidth="4"
-          />
-        </svg>
-
-        {/* Confetti & Floating Shapes */}
-        <div className="confetti-shape confetti-zigzag" />
-        <div className="confetti-shape confetti-diamond" />
-        <div className="confetti-shape confetti-mint" />
-
-        {/* Floating Paperclips */}
-        <div className="floating-paperclip paperclip-blue" />
-        <div className="floating-paperclip paperclip-pink" />
-        <div className="floating-paperclip paperclip-mint" />
-      </div>
-
-      {/* ── Centerpiece Headline with Developer Slanted Stickers ── */}
-      <div className="creatie-hero-center">
-        {/* Slanted Floating Code Sticker */}
-        <div className="sticker-badge sticker-uiux">
-          <span className="paperclip-icon paperclip-icon--blue" aria-hidden="true" />
-          <span className="sticker-dot sticker-dot--blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-          </span>
-          <span className="sticker-text">Code</span>
+    <section
+      className={`vk-hero ${showSplash ? 'vk-hero--intro' : ''}`}
+      id="hero"
+      aria-label="Introduction"
+    >
+      {showSplash && (
+        <div
+          className="vk-splash"
+          aria-hidden="true"
+          onAnimationEnd={(e) => {
+            if (e.animationName === 'vk-splash-out') setShowSplash(false);
+          }}
+        >
+          <div className="vk-terminal">
+            <div className="vk-terminal-bar">
+              <span /><span /><span />
+              <em>~/vaishnavi</em>
+            </div>
+            <div className="vk-terminal-body">
+              <p><b>$</b> {typed(SPLASH_CMD, 250, 55)}</p>
+              <p className="vk-terminal-reply">
+                <b>&gt;</b> {typed(SPLASH_REPLY, 1150, 40)}
+                <i className="vk-caret" />
+              </p>
+            </div>
+          </div>
         </div>
+      )}
 
-        <h1 className="creatie-hero-title">
-          <span className="title-line">FROM FIRST</span>
-          <span className="title-line title-line--flex">
-            COMMIT TO
-            {/* Inline Slanted Eat Sticker */}
-            <span className="sticker-badge sticker-illustration">
-              <span className="paperclip-icon paperclip-icon--pink" aria-hidden="true" />
-              <span className="sticker-dot sticker-dot--pink">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-                  <path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2" />
-                  <path d="M15 11v11" />
-                  <path d="M6 2v10a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2" />
-                  <path d="M8 14v8" />
-                  <line x1="6" y1="6" x2="10" y2="6" />
-                </svg>
-              </span>
-              <span className="sticker-text">Eat</span>
-            </span>
-          </span>
-          <span className="title-line title-line--flex">
-            {/* Inline Slanted Sleep Sticker */}
-            <span className="sticker-badge sticker-3d">
-              <span className="paperclip-icon paperclip-icon--purple" aria-hidden="true" />
-              <span className="sticker-dot sticker-dot--purple">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              </span>
-              <span className="sticker-text">Sleep</span>
-            </span>
-            LIVE IN
-          </span>
-          <span className="title-line">PRODUCTION</span>
-        </h1>
+      {/* ── Floating décor ── */}
+      <div className="vk-decor" aria-hidden="true">
+        <div className="vk-bubble vk-bubble--left vk-pop" style={delay(1.1)}>
+          <img src={portrait} alt="" />
+          <span className="vk-bubble-emoji">☕</span>
+        </div>
+        <div className="vk-bubble vk-bubble--right vk-pop" style={delay(1.2)}>
+          <img src={lily} alt="" className="vk-bubble-lily" />
+          <span className="vk-bubble-emoji vk-bubble-emoji--late">💻</span>
+        </div>
+        <img src={goldStar} alt="" className="vk-star vk-pop" style={delay(1.3)} />
+        <span className="vk-curly vk-pop" style={delay(1.4)}>{'{ }'}</span>
       </div>
 
-      {/* ── Bottom Section Bar: Manifesto, Mac Dock, and Case Study ── */}
-      <footer className="creatie-hero-bottom">
-        {/* Left Manifesto */}
-        <div className="creatie-manifesto">
-          <div className="manifesto-copy">
-            <p className="manifesto-sub">I build reliable software with clean architecture, a smooth user experience, and code that&apos;s easy to maintain.</p>
+      <div className="vk-hero-inner">
+        {/* Handwritten intro */}
+        <p className="vk-hello vk-pop" style={delay(0.1)}>
+          hello world, i&apos;m
+          <svg viewBox="0 0 120 14" className="vk-scribble" aria-hidden="true">
+            <path d="M3 9 C 25 3, 55 3, 80 7 S 110 10, 117 5" />
+            <path d="M18 12 C 40 9, 70 9, 98 11" />
+          </svg>
+        </p>
+
+        <div className="vk-name-stage">
+          <span className="vk-sticker vk-sticker--mint vk-pop" style={delay(0.7)}>
+            console.log(&apos;hi&apos;)
+          </span>
+          <span className="vk-sticker vk-sticker--yellow vk-pop" style={delay(0.8)}>
+            git commit -m &quot;ship it&quot;
+          </span>
+
+          <h1 className="vk-name">
+            <svg className="vk-name-frame" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M8 14 C 150 6, 420 10, 590 8 C 594 70, 588 140, 592 186 C 420 194, 160 190, 12 192 C 6 130, 10 70, 8 14 Z" />
+            </svg>
+            <span className="visually-hidden">Vaishnavi Khairnar</span>
+            <span className="vk-name-letters" aria-hidden="true">
+              {[...NAME].map((ch, i) => (
+                <span key={i} className="vk-letter" style={delay(0.2 + i * 0.06)}>{ch}</span>
+              ))}
+              <span className="vk-name-cursor" />
+            </span>
+          </h1>
+
+          <div className="vk-note vk-note--yellow vk-pop" style={delay(0.9)}>
+            <span className="vk-clip" aria-hidden="true" />
+            Full Stack Developer
+            <svg className="vk-arrow vk-arrow--left" viewBox="0 0 50 40" aria-hidden="true">
+              <path d="M4 36 C 18 30, 30 20, 42 6 M30 7 L42 6 L41 18" />
+            </svg>
+          </div>
+          <div className="vk-note vk-note--mint vk-pop" style={delay(1.0)}>
+            <span className="vk-clip vk-clip--pink" aria-hidden="true" />
+            India · remote ok
+            <svg className="vk-arrow vk-arrow--right" viewBox="0 0 50 40" aria-hidden="true">
+              <path d="M46 36 C 32 30, 20 20, 8 6 M20 7 L8 6 L9 18" />
+            </svg>
           </div>
         </div>
 
-        {/* Center Mac-Style Frosted Glass Dock */}
-        <nav className="creatie-mac-dock" role="navigation" aria-label="Quick Dock Navigation">
-          <Magnetic strength={0.3}>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="dock-item"
-              aria-label="About Me"
-              onMouseEnter={() => setActiveDock('About')}
-              onMouseLeave={() => setActiveDock(null)}
-            >
-              <img
-                src="https://framerusercontent.com/images/fzS4akadFPHws9AEuhq2dRMEBD8.png"
-                alt="About"
-                className="dock-icon"
-                width={48}
-                height={48}
-              />
-              {activeDock === 'About' && <span className="dock-tooltip">About</span>}
-            </button>
-          </Magnetic>
+        <p className="vk-status vk-pop" style={delay(1.0)}>
+          <span className="vk-status-dot" aria-hidden="true" />
+          status 200 · open to new work &amp; good bugs
+        </p>
 
-          <Magnetic strength={0.3}>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="dock-item"
-              aria-label="Projects"
-              onMouseEnter={() => setActiveDock('Projects')}
-              onMouseLeave={() => setActiveDock(null)}
-            >
-              <img
-                src="https://framerusercontent.com/images/fuyFscQ2e4cEmcASIC0c9KSsI.png"
-                alt="Projects"
-                className="dock-icon"
-                width={48}
-                height={48}
-              />
-              {activeDock === 'Projects' && <span className="dock-tooltip">Projects</span>}
-            </button>
-          </Magnetic>
+        <h2 className="vk-headline vk-pop" style={delay(1.15)}>
+          I build software that
+          <span className="vk-ring" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs>
+                <path id="vk-ring-path" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0" />
+              </defs>
+              <text><textPath href="#vk-ring-path">ship · debug · repeat · ship · debug · repeat ·</textPath></text>
+            </svg>
+            <b>&lt;/&gt;</b>
+          </span>
+          <br />
+          <em>thinks</em> before it speaks.
+          <span className="vk-flower" aria-hidden="true">✿</span>
+        </h2>
 
-          <Magnetic strength={0.3}>
-            <button
-              onClick={() => scrollToSection('capabilities')}
-              className="dock-item"
-              aria-label="Services & Skills"
-              onMouseEnter={() => setActiveDock('Skills')}
-              onMouseLeave={() => setActiveDock(null)}
-            >
-              <img
-                src="https://framerusercontent.com/images/8UW4wd69DBrZGI2hFpAtJfsRLs.png"
-                alt="Skills"
-                className="dock-icon"
-                width={48}
-                height={48}
-              />
-              {activeDock === 'Skills' && <span className="dock-tooltip">Skills</span>}
-            </button>
-          </Magnetic>
-
-          <Magnetic strength={0.3}>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="dock-item dock-item--badge"
-              aria-label="Contact"
-              onMouseEnter={() => setActiveDock('Contact')}
-              onMouseLeave={() => setActiveDock(null)}
-            >
-              <img
-                src="https://framerusercontent.com/images/e3MMo36Gb3GoSAC2U8QX2JiQY.png"
-                alt="Contact"
-                className="dock-icon"
-                width={48}
-                height={48}
-              />
-              {activeDock === 'Contact' && <span className="dock-tooltip">Contact</span>}
-            </button>
-          </Magnetic>
-        </nav>
-
-        {/* Right Balance Spacer */}
-        <div className="creatie-bottom-spacer" aria-hidden="true" />
-      </footer>
+        <div className="vk-ctas vk-pop" style={delay(1.3)}>
+          <a href="#contact" className="vk-btn vk-btn--dark">
+            <span className="vk-btn-icon" aria-hidden="true">$</span>
+            say-hello
+          </a>
+          <a href="#projects" className="vk-btn vk-btn--ghost">
+            view my work ↓
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

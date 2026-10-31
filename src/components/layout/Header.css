@@ -20,6 +20,25 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* Over the light notebook hero: dark ink until the glass bar appears */
+.header:not(.header-scrolled) .logo-text,
+.header:not(.header-scrolled) .nav-link,
+.header:not(.header-scrolled) .nav-link:hover {
+  color: var(--color-paper-text);
+  text-shadow: none;
+}
+
+.header:not(.header-scrolled) .nav-link::after {
+  background: var(--color-paper-text);
+}
+
+.header:not(.header-scrolled) .social-link,
+.header:not(.header-scrolled) .mobile-menu-btn {
+  color: var(--color-paper-text);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
 .header-container {
   display: flex;
   align-items: center;
