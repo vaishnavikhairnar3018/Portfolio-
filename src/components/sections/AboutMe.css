@@ -9,7 +9,7 @@
   padding: 1rem 1.5rem 6rem;
   color: var(--ink);
   background-color: var(--color-paper);
-  background-image: repeating-linear-gradient(to bottom, transparent 0 41px, rgba(29, 27, 25, 0.09) 41px 42px);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 33px, rgba(29, 27, 25, 0.09) 33px 34px);
 }
 
 /* ── Arc divider ── */

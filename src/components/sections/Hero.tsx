@@ -29,79 +29,50 @@ function typed(text: string, startMs: number, stepMs: number) {
 
 const delay = (s: number) => ({ '--d': `${s}s` }) as CSSProperties;
 
-const LENS_SIZE = 220;
-
-// Inverting selection box that trails the mouse, only while it is over hero content.
+// Inverting selection box that follows the cursor while it is over the name block.
 function useInspectLens() {
-  const heroRef = useRef<HTMLElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null);
+  const lensRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const hero = heroRef.current;
-    if (!hero || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const group = groupRef.current;
+    const lens = lensRef.current;
+    if (!group || !lens || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-    let frame = 0;
-    const target = { x: 0, y: 0 };
-    const pos = { x: 0, y: 0 };
-
-    const tick = () => {
-      pos.x += (target.x - pos.x) * 0.2;
-      pos.y += (target.y - pos.y) * 0.2;
-      hero.style.setProperty('--lx', `${pos.x - LENS_SIZE / 2}px`);
-      hero.style.setProperty('--ly', `${pos.y - LENS_SIZE / 2}px`);
-      frame = Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > 0.5 ? requestAnimationFrame(tick) : 0;
-    };
-
-    const hide = () => hero.classList.remove('vk-hero--lens');
+    const wide = window.matchMedia('(min-width: 1024px)');
+    const hide = () => group.classList.remove('vk-name-group--lens');
 
     const onMove = (e: PointerEvent) => {
-      // Content blocks shrink to fit, so hitting the wrapper itself means empty space
-      const el = e.target as Element;
-      const inner = el.closest('.vk-hero-inner');
-      if (!inner || el === inner) {
-        hide();
-        return;
-      }
-
-      const rect = hero.getBoundingClientRect();
-      target.x = e.clientX - rect.left;
-      target.y = e.clientY - rect.top;
-      if (!hero.classList.contains('vk-hero--lens')) {
-        pos.x = target.x;
-        pos.y = target.y;
-        hero.classList.add('vk-hero--lens');
-      }
-      if (!frame) frame = requestAnimationFrame(tick);
+      if (!wide.matches) return;
+      const rect = group.getBoundingClientRect();
+      lens.style.left = `${e.clientX - rect.left}px`;
+      lens.style.top = `${e.clientY - rect.top}px`;
+      group.classList.add('vk-name-group--lens');
     };
 
-    hero.addEventListener('pointermove', onMove);
-    hero.addEventListener('pointerleave', hide);
+    group.addEventListener('pointermove', onMove);
+    group.addEventListener('pointerleave', hide);
     window.addEventListener('scroll', hide, { passive: true });
     return () => {
-      cancelAnimationFrame(frame);
-      hero.removeEventListener('pointermove', onMove);
-      hero.removeEventListener('pointerleave', hide);
+      group.removeEventListener('pointermove', onMove);
+      group.removeEventListener('pointerleave', hide);
       window.removeEventListener('scroll', hide);
     };
   }, []);
 
-  return heroRef;
+  return { groupRef, lensRef };
 }
 
 export function Hero() {
   const [showSplash, setShowSplash] = useState(shouldShowSplash);
-  const heroRef = useInspectLens();
+  const { groupRef, lensRef } = useInspectLens();
 
   return (
     <section
-      ref={heroRef}
       className={`vk-hero ${showSplash ? 'vk-hero--intro' : ''}`}
       id="hero"
       aria-label="Introduction"
     >
-      <div className="vk-lens" aria-hidden="true" />
-      <div className="vk-lens-frame" aria-hidden="true">
-        <i /><i /><i /><i />
-      </div>
 
       {showSplash && (
         <div
@@ -125,49 +96,52 @@ export function Hero() {
       </div>
 
       <div className="vk-hero-inner">
-        {/* Handwritten intro */}
-        <p className="vk-hello vk-pop" style={delay(0.1)}>
-          hello world, i&apos;m
-          <svg viewBox="0 0 120 14" className="vk-scribble" aria-hidden="true">
-            <path d="M3 9 C 25 3, 55 3, 80 7 S 110 10, 117 5" />
-            <path d="M18 12 C 40 9, 70 9, 98 11" />
-          </svg>
-        </p>
-
-        <div className="vk-name-stage">
-          <span className="vk-sticker vk-sticker--mint vk-pop" style={delay(0.7)}>
-            console.log(&apos;hi&apos;)
-          </span>
-          <span className="vk-sticker vk-sticker--yellow vk-pop" style={delay(0.8)}>
-            git commit -m &quot;ship it&quot;
+        {/* Name block: the inspect lens only works in here */}
+        <div ref={groupRef} className="vk-name-group">
+          <span ref={lensRef} className="vk-lens" aria-hidden="true">
+            <i /><i /><i /><i />
           </span>
 
-          <h1 className="vk-name">
-            <svg className="vk-name-frame" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M8 14 C 150 6, 420 10, 590 8 C 594 70, 588 140, 592 186 C 420 194, 160 190, 12 192 C 6 130, 10 70, 8 14 Z" />
+          <p className="vk-hello vk-pop" style={delay(0.1)}>
+            hello world, i&apos;m
+            <svg viewBox="0 0 120 14" className="vk-scribble" aria-hidden="true">
+              <path d="M3 9 C 25 3, 55 3, 80 7 S 110 10, 117 5" />
+              <path d="M18 12 C 40 9, 70 9, 98 11" />
             </svg>
-            <span className="visually-hidden">Vaishnavi Khairnar</span>
-            <span className="vk-name-letters" aria-hidden="true">
-              {[...NAME].map((ch, i) => (
-                <span key={i} className="vk-letter" style={delay(0.25 + i * 0.08)}>{ch}</span>
-              ))}
-              <span className="vk-name-cursor" />
+          </p>
+
+          <div className="vk-name-stage">
+            <span className="vk-sticker vk-sticker--mint vk-pop" style={delay(0.7)}>
+              console.log(&apos;hi&apos;)
             </span>
-          </h1>
+            <span className="vk-sticker vk-sticker--yellow vk-pop" style={delay(0.8)}>
+              git commit -m &quot;ship it&quot;
+            </span>
 
-          <div className="vk-note vk-note--yellow vk-pop" style={delay(0.9)}>
-            <span className="vk-clip" aria-hidden="true" />
-            Full Stack Developer
-            <svg className="vk-arrow vk-arrow--left" viewBox="0 0 50 40" aria-hidden="true">
-              <path d="M4 36 C 18 30, 30 20, 42 6 M30 7 L42 6 L41 18" />
-            </svg>
-          </div>
-          <div className="vk-note vk-note--mint vk-pop" style={delay(1.0)}>
-            <span className="vk-clip vk-clip--pink" aria-hidden="true" />
-            India · remote ok
-            <svg className="vk-arrow vk-arrow--right" viewBox="0 0 50 40" aria-hidden="true">
-              <path d="M46 36 C 32 30, 20 20, 8 6 M20 7 L8 6 L9 18" />
-            </svg>
+            <h1 className="vk-name">
+              <span className="visually-hidden">Vaishnavi Khairnar</span>
+              <span className="vk-name-letters" aria-hidden="true">
+                {[...NAME].map((ch, i) => (
+                  <span key={i} className="vk-letter" style={delay(0.25 + i * 0.08)}>{ch}</span>
+                ))}
+                <span className="vk-name-cursor" />
+              </span>
+            </h1>
+
+            <div className="vk-note vk-note--yellow vk-pop" style={delay(0.9)}>
+              <span className="vk-clip" aria-hidden="true" />
+              Full Stack Developer
+              <svg className="vk-arrow vk-arrow--left" viewBox="0 0 50 40" aria-hidden="true">
+                <path d="M4 36 C 18 30, 30 20, 42 6 M30 7 L42 6 L41 18" />
+              </svg>
+            </div>
+            <div className="vk-note vk-note--mint vk-pop" style={delay(1.0)}>
+              <span className="vk-clip vk-clip--pink" aria-hidden="true" />
+              India · remote ok
+              <svg className="vk-arrow vk-arrow--right" viewBox="0 0 50 40" aria-hidden="true">
+                <path d="M46 36 C 32 30, 20 20, 8 6 M20 7 L8 6 L9 18" />
+              </svg>
+            </div>
           </div>
         </div>
 
