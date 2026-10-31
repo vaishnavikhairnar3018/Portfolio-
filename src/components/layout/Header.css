@@ -283,6 +283,18 @@
   gap: var(--space-md);
 }
 
+/* Medium widths: drop the surname and social icons so the name never touches the links */
+@media (max-width: 1120px) {
+  .header-container {
+    gap: 1.5rem;
+  }
+
+  .logo-surname,
+  .nav-social {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --nav-height: 64px;
