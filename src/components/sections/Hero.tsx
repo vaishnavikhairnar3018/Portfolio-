@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import portrait from '../../assets/id_card_portrait.jpg';
-import lily from '../../assets/real_lily_flower.png';
 import goldStar from '../../assets/real_gold_star.png';
 import './Hero.css';
 
@@ -116,14 +114,6 @@ export function Hero() {
 
       {/* ── Floating décor ── */}
       <div className="vk-decor" aria-hidden="true">
-        <div className="vk-bubble vk-bubble--left vk-pop" style={delay(1.1)}>
-          <img src={portrait} alt="" />
-          <span className="vk-bubble-emoji">☕</span>
-        </div>
-        <div className="vk-bubble vk-bubble--right vk-pop" style={delay(1.2)}>
-          <img src={lily} alt="" className="vk-bubble-lily" />
-          <span className="vk-bubble-emoji vk-bubble-emoji--late">💻</span>
-        </div>
         <img src={goldStar} alt="" className="vk-star vk-pop" style={delay(1.3)} />
         <span className="vk-curly vk-pop" style={delay(1.4)}>{'{ }'}</span>
       </div>

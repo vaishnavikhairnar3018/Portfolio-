@@ -528,8 +528,7 @@
   height: 220px;
   pointer-events: none;
   transform: translate(var(--lx, 0), var(--ly, 0)) scale(0.6);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  visibility: hidden;
 }
 
 .vk-lens {
@@ -539,7 +538,7 @@
 
 .vk-hero--lens .vk-lens,
 .vk-hero--lens .vk-lens-frame {
-  opacity: 1;
+  visibility: visible;
   transform: translate(var(--lx, 0), var(--ly, 0));
 }
 
@@ -585,69 +584,6 @@
   pointer-events: none;
 }
 
-.vk-bubble {
-  position: absolute;
-  width: clamp(76px, 7vw, 104px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 5px solid var(--hero-orange);
-  background: #1d1b19;
-  overflow: hidden;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-}
-
-.vk-bubble--left {
-  left: 9%;
-  top: 56%;
-}
-
-.vk-bubble--right {
-  right: 9%;
-  top: 62%;
-  border-color: var(--hero-pink);
-}
-
-.vk-bubble img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 28%;
-  transform: scale(1.35);
-  animation: vk-swap 4.4s infinite;
-}
-
-.vk-bubble .vk-bubble-lily {
-  transform: scale(1.1);
-}
-
-.vk-bubble-emoji {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 2.2rem;
-  background: var(--color-pill-yellow);
-  opacity: 0;
-  animation: vk-swap 4.4s infinite -2.2s;
-}
-
-.vk-bubble-emoji--late {
-  background: var(--color-pill-lavender);
-}
-
-.vk-bubble--right img {
-  animation-delay: -1.1s;
-}
-.vk-bubble--right .vk-bubble-emoji {
-  animation-delay: -3.3s;
-}
-
-@keyframes vk-swap {
-  0%, 46% { opacity: 1; }
-  52%, 96% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 .vk-star {
   position: absolute;
   top: 13%;
@@ -678,18 +614,12 @@
    Responsive
    ========================================================================== */
 
-@media (max-width: 1100px) {
-  .vk-bubble--left { left: 3%; }
-  .vk-bubble--right { right: 3%; }
-}
-
 @media (max-width: 860px) {
   .vk-hero {
     background-image:
       repeating-linear-gradient(to bottom, transparent 0 41px, rgba(29, 27, 25, 0.09) 41px 42px);
   }
 
-  .vk-bubble,
   .vk-curly {
     display: none;
   }

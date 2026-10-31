@@ -115,7 +115,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-background);
+  background: var(--color-paper);
   color: var(--color-foreground);
   min-height: 100vh;
   overflow-x: hidden;

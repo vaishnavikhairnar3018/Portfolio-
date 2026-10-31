@@ -26,7 +26,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0a0f1e;
+  background: var(--color-paper);
   color: var(--color-foreground);
   overflow-x: hidden;
   position: relative;

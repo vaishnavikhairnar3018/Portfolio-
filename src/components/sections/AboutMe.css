@@ -208,12 +208,6 @@
   object-position: 50% 20%;
 }
 
-.vk-polaroid--right {
-  right: -1rem;
-  top: -1.5rem;
-  rotate: 6deg;
-}
-
 .vk-polaroid:hover {
   rotate: 0deg;
   scale: 1.04;
@@ -245,25 +239,13 @@
 
 @media (max-width: 960px) {
   .vk-polaroid--left { left: -2.5rem; top: 9rem; }
-  .vk-polaroid--right { right: -2.5rem; }
 }
 
 @media (max-width: 760px) {
-  .vk-about-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    gap: 0 1rem;
-  }
-
-  .vk-about-inner > :not(.vk-polaroid) {
-    grid-column: 1 / -1;
-  }
-
   .vk-polaroid {
     position: relative;
     inset: auto;
-    width: min(150px, 100%);
+    width: min(160px, 60%);
     margin-bottom: 2.4rem;
   }
 

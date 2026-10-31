@@ -13,27 +13,27 @@
 }
 
 .header-scrolled {
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  background: rgba(245, 243, 234, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Over the light notebook hero: dark ink until the glass bar appears */
-.header:not(.header-scrolled) .logo-text,
-.header:not(.header-scrolled) .nav-link,
-.header:not(.header-scrolled) .nav-link:hover {
+/* Every section is light paper now, so the header always uses dark ink */
+.header .logo-text,
+.header .nav-link,
+.header .nav-link:hover {
   color: var(--color-paper-text);
   text-shadow: none;
 }
 
-.header:not(.header-scrolled) .nav-link::after {
+.header .nav-link::after {
   background: var(--color-paper-text);
 }
 
-.header:not(.header-scrolled) .social-link,
-.header:not(.header-scrolled) .mobile-menu-btn {
+.header .social-link,
+.header .mobile-menu-btn {
   color: var(--color-paper-text);
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.14);

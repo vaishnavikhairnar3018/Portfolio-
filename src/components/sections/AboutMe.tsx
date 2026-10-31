@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import portrait from '../../assets/id_card_portrait.jpg';
-import orchid from '../../assets/orchid_bloom.jpg';
 import './AboutMe.css';
 
 const SKILLS = [
@@ -53,12 +52,6 @@ export function AboutMe() {
           <figcaption>that&apos;s me ✿</figcaption>
         </figure>
 
-        <figure className="vk-polaroid vk-polaroid--right vk-reveal" style={{ '--d': '0.3s' } as CSSProperties}>
-          <span className="vk-tape vk-tape--l" aria-hidden="true" />
-          <span className="vk-tape vk-tape--r" aria-hidden="true" />
-          <img src={orchid} alt="A pink orchid in bloom" />
-          <figcaption>bugs &amp; blooms</figcaption>
-        </figure>
 
         <h2 id="vk-about-title" className="vk-about-title vk-reveal">
           <span aria-hidden="true">$</span> whoami
