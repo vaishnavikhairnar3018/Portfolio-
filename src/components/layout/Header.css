@@ -7,15 +7,14 @@
   height: var(--nav-height);
   background: transparent;
   backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
   transition: all var(--transition-base);
 }
 
 .header-scrolled {
-  background: rgba(245, 243, 234, 0.82);
+  /* Only the standard property: with both, the build keeps just the -webkit- one, which Chrome ignores */
+  background: rgba(245, 243, 234, 0.92);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-bottom-color: rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -178,7 +177,6 @@
   color: #ffffff;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: all var(--transition-fast);
@@ -210,7 +208,6 @@
   color: #ffffff;
   background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
   transition: all var(--transition-fast);
