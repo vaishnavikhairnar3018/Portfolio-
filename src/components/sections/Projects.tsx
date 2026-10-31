@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Projects.css';
+import verdictDashboard from '../../assets/verdict-dashboard.png';
 
 export type CreatieProject = {
   id: string;
@@ -17,17 +18,17 @@ export type CreatieProject = {
 
 const CREATIE_PROJECTS: CreatieProject[] = [
   {
-    id: 'loom',
-    name: 'Loom AI Studio',
-    category: 'AI Architecture · Full Stack',
-    summary: 'Intelligent writing companion with local-first vector memory and sub-200ms streaming inference.',
-    metric: '⚡ 180ms P99 Latency',
-    tags: ['Next.js 15', 'Vercel AI SDK', 'pgvector', 'TypeScript'],
-    image: 'https://cdn.dribbble.com/userupload/46128964/file/b92b9d268dd928642ca94bd49e32923a.jpg?resize=752x497&vertical=center',
+    id: 'verdict',
+    name: 'Verdict',
+    category: 'Multi-Agent AI · Full Stack',
+    summary: 'AI fact-checker where a Researcher, Skeptic and Judge verify every claim before it reaches the answer, with cited sources.',
+    metric: '🛡️ 4-Agent Fact Check',
+    tags: ['Python', 'LangGraph', 'Gemini', 'FastAPI'],
+    image: verdictDashboard,
     tilt: -2,
     clipColor: 'blue',
-    liveUrl: 'https://loom-ai.dev',
-    githubUrl: 'https://github.com/vaishnavi/loom-ai',
+    liveUrl: 'https://verdict-crew.vercel.app',
+    githubUrl: 'https://github.com/vaishnavikhairnar3018/Verdict',
   },
   {
     id: 'atlas',
@@ -146,7 +147,7 @@ export function Projects() {
                   </div>
                   <div className="browser-url-bar">
                     <span className="url-lock">&#128274;</span>
-                    <span className="url-text">{project.id}.vaishnavi.dev</span>
+                    <span className="url-text">{new URL(project.liveUrl).host}</span>
                   </div>
                   <span className="browser-metric-pill">{project.metric}</span>
                 </div>
